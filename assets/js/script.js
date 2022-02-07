@@ -50,8 +50,10 @@ function checkAnswer() {
 
     if (isCorrect) {
         alert("Hey! You got it right! :D");
+        incrementScore();
     } else {
-        alert(`Awww... you answer ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`)
+        alert(`Awww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`)
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]);
@@ -76,11 +78,23 @@ function calculateCorrectAnswer() {
     }
 }
 
+/**
+ * Gets the current score from DOM and increments by 1
+ */
 function incrementScore() {
+
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").innerText = ++oldScore;
 
 }
 
+/**
+ * Gets the current wrong answer count from DOM and increments by 1
+ */
 function incrementWrongAnswer() {
+
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore;
 
 }
 
